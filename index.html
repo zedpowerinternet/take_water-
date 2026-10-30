@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4a90d9" />
+  <meta name="description" content="Dead-simple water tracking. Tap to drink. No signup." />
+  <title>Water Tracker</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>💧 Water Tracker</h1>
+
+    <!-- Goal setting -->
+    <div class="goal-row">
+      <label for="goalInput">Daily goal (glasses):</label>
+      <input type="number" id="goalInput" min="1" max="20" value="8" />
+    </div>
+
+    <!-- Progress ring + count -->
+    <div class="progress-wrap">
+      <svg class="ring" viewBox="0 0 120 120">
+        <circle class="ring-bg" cx="60" cy="60" r="52" />
+        <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="52" />
+      </svg>
+      <div class="count" id="countText">0 / 8</div>
+    </div>
+
+    <!-- Main button -->
+    <button id="addBtn" class="add-btn">+1 Glass</button>
+    <button id="resetBtn" class="reset-btn">Reset today</button>
+
+    <!-- 7-day history -->
+    <h2>Last 7 days</h2>
+    <ul id="historyList" class="history"></ul>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js");
+    }
+  </script>
+</body>
+</html>
